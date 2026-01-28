@@ -20,8 +20,8 @@ export function FilterBar() {
           onClick={() => dispatch(setFilter(id))}
           className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
             filter === id
-              ? 'bg-primary text-white'
-              : 'bg-surface border border-border text-muted hover:text-white hover:border-primary'
+              ? 'bg-primary bg-[#2563EB] text-white'
+              : 'bg-surface bg-[#111827] border border-border text-muted hover:text-white hover:border-primary'
           }`}
         >
           <Icon className="w-4 h-4" />

@@ -1,0 +1,27 @@
+/* Fallback CSS variables & utility classes to ensure solid colors
+   These provide deterministic color fallbacks when Tailwind theme classes are missing.
+*/
+:root{
+  --primary: #2563EB;
+  --secondary: #0F172A;
+  --surface: #111827;
+  --muted: #94A3B8;
+  --accent: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #38BDF8;
+  --border: #1F2937;
+}
+
+/* Simple utility fallbacks (used alongside Tailwind classes) */
+.bg-primary-fallback{ background-color: var(--primary) !important; color: #fff !important }
+.bg-secondary-fallback{ background-color: var(--secondary) !important; color: #fff !important }
+.bg-surface-fallback{ background-color: var(--surface) !important; color: #fff !important }
+.bg-accent-fallback{ background-color: var(--accent) !important; color: #fff !important }
+.bg-warning-fallback{ background-color: var(--warning) !important; color: #fff !important }
+.bg-danger-fallback{ background-color: var(--danger) !important; color: #fff !important }
+.text-muted-fallback{ color: var(--muted) !important }
+.border-border-fallback{ border-color: var(--border) !important }
+
+/* small helper for badges */
+.badge-solid { padding: .25rem .6rem; border-radius: 9999px; font-weight:600; display:inline-flex; align-items:center; gap:.5rem }

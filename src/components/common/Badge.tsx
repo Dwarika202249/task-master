@@ -8,11 +8,11 @@ interface BadgeProps {
 
 export default function Badge({ variant = 'default', children, icon }: BadgeProps) {
   const variants = {
-    default: 'bg-surface text-muted border border-border',
-    high: 'bg-danger text-white border border-danger',
-    medium: 'bg-warning text-white border border-warning',
-    low: 'bg-accent text-white border border-accent',
-    accent: 'bg-info text-white border border-info',
+    default: 'bg-[#0F172A] text-white border border-border badge-solid',
+    high: 'bg-danger bg-[#EF4444] text-white border border-danger badge-solid',
+    medium: 'bg-warning bg-[#F59E0B] text-white border border-warning badge-solid',
+    low: 'bg-accent bg-[#22C55E] text-white border border-accent badge-solid',
+    accent: 'bg-info bg-[#38BDF8] text-white border border-info badge-solid',
   };
 
   return (

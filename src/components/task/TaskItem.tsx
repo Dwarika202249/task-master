@@ -3,12 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTask, toggleTaskComplete, updateTask } from '../../features/tasks/tasksSlice';
 import type { Task } from '../../types/task.types';
 import { Trash2, Edit2, Save, X, GripVertical } from 'lucide-react';
-
-// const priorityColors = {
-//   high: { icon: '🔴', label: 'High' },
-//   medium: { icon: '🟡', label: 'Medium' },
-//   low: { icon: '🟢', label: 'Low' },
-// };
+import Badge from '../common/Badge';
 
 export default function TaskItem({ task }: { task: Task }) {
   const dispatch = useDispatch();
@@ -25,9 +20,9 @@ export default function TaskItem({ task }: { task: Task }) {
 
   return (
     <div
-      className={`group relative bg-surface border border-border rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary hover:shadow-lg ${
+      className={`group relative bg-surface bg-[#111827] border border-border rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary hover:shadow-lg ${
         task.completed ? 'opacity-60' : ''
-      }`}
+      } ${task.priority === 'high' ? 'border-l-4 border-danger border-l-[#EF4444]' : task.priority === 'medium' ? 'border-l-4 border-warning border-l-[#F59E0B]' : 'border-l-4 border-accent border-l-[#22C55E]'}`}
     >
       <div className="flex items-start gap-3">
         {/* Drag Handle */}
@@ -55,6 +50,7 @@ export default function TaskItem({ task }: { task: Task }) {
                 onChange={(e)=>setTitle(e.target.value)}
                 className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Task title"
+                aria-label="Edit task title"
               />
               <textarea
                 value={description}
@@ -62,6 +58,7 @@ export default function TaskItem({ task }: { task: Task }) {
                 className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 placeholder="Description"
                 rows={2}
+                aria-label="Edit task description"
               />
             </div>
           ) : (
@@ -72,7 +69,9 @@ export default function TaskItem({ task }: { task: Task }) {
               {task.description && (
                 <div className="text-sm text-muted mt-1">{task.description}</div>
               )}
-              <div className="flex flex-wrap gap-2 mt-3">
+              <div className="flex items-center gap-2 mt-3 flex-wrap">
+                <Badge variant="default">{task.category}</Badge>
+                <Badge variant={task.priority}>{task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}</Badge>
               </div>
             </>
           )}

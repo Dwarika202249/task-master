@@ -6,15 +6,15 @@ export default function Header() {
   const stats = useSelector(selectTaskStats);
 
   return (
-    <header className="bg-[#2563EB] border-b border-border sticky top-0 z-50 mb-20">
+    <header className="bg-secondary bg-[#0F172A] border-b border-border sticky top-0 z-50 mb-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-3 bg-primary rounded-xl flex items-center justify-center">
+            <div className="p-3 bg-primary bg-[#2563EB] rounded-xl flex items-center justify-center">
               <Zap className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white">Task Master</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white">SyncQuark</h1>
               <p className="text-xs text-muted">Organize. Execute. Win.</p>
             </div>
           </div>

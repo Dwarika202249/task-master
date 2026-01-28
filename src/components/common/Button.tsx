@@ -18,9 +18,10 @@ export default function Button({
   const baseStyles = 'font-semibold rounded-lg transition-all duration-150 flex items-center gap-2 justify-center hover:opacity-90 active:scale-95';
 
   const variants = {
-    primary: 'bg-primary text-white',
-    secondary: 'bg-surface text-white border border-border',
-    danger: 'bg-danger text-white hover:bg-red-600',
+    // include an explicit hex fallback class to ensure solid fill even if theme colors aren't generated
+    primary: 'bg-primary bg-[#2563EB] text-white',
+    secondary: 'bg-surface bg-[#111827] text-white border border-border',
+    danger: 'bg-danger bg-[#EF4444] text-white',
     ghost: 'text-muted hover:text-white hover:bg-surface',
   };
 
