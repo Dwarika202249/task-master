@@ -8,6 +8,8 @@ const filterConfig = [
   { id: 'completed', label: 'Completed', icon: CheckCircle2 },
 ] as const;
 
+import Button from '../common/Button';
+
 export function FilterBar() {
   const dispatch = useDispatch();
   const filter = useSelector(selectFilter);
@@ -15,18 +17,17 @@ export function FilterBar() {
   return (
     <div className="flex gap-2 flex-wrap">
       {filterConfig.map(({ id, label, icon: Icon }) => (
-        <button
+        <Button
           key={id}
           onClick={() => dispatch(setFilter(id))}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
-            filter === id
-              ? 'bg-primary bg-[#2563EB] text-white'
-              : 'bg-surface bg-[#111827] border border-border text-muted hover:text-white hover:border-primary'
-          }`}
+          variant={filter === id ? 'primary' : 'secondary'}
+          size="sm"
+          className="flex items-center gap-2 w-full sm:w-auto"
+          aria-pressed={filter === id}
         >
           <Icon className="w-4 h-4" />
           {label}
-        </button>
+        </Button>
       ))}
     </div>
   );

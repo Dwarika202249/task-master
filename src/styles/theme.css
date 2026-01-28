@@ -25,3 +25,24 @@
 
 /* small helper for badges */
 .badge-solid { padding: .25rem .6rem; border-radius: 9999px; font-weight:600; display:inline-flex; align-items:center; gap:.5rem }
+
+/* subtle entrance animation for badges/cards */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeInUp 220ms cubic-bezier(.2,.8,.2,1) both }
+
+/* width percentage helpers (10% steps) used by dashboard to avoid inline styles */
+.w-pct-0 { width: 0% }
+.w-pct-10 { width: 10% }
+.w-pct-20 { width: 20% }
+.w-pct-30 { width: 30% }
+.w-pct-40 { width: 40% }
+.w-pct-50 { width: 50% }
+.w-pct-60 { width: 60% }
+.w-pct-70 { width: 70% }
+.w-pct-80 { width: 80% }
+.w-pct-90 { width: 90% }
+.w-pct-100 { width: 100% }
+

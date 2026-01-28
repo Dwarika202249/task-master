@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchQuery } from '../../features/tasks/tasksSlice';
 import { Search, X } from 'lucide-react';
+import Button from '../common/Button';
 
 export function SearchBar() {
   const dispatch = useDispatch();
@@ -22,15 +23,11 @@ export function SearchBar() {
         onChange={(e)=>setQ(e.target.value)}
       />
       {q && (
-        <button
-          type="button"
-          aria-label="Clear search"
-          title="Clear search"
-          onClick={() => setQ('')}
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-white transition-colors"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <div className="absolute right-3 top-1/2 -translate-y-1/2">
+          <Button variant="ghost" size="sm" onClick={() => setQ('')} aria-label="Clear search" className="text-muted hover:text-white">
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
       )}
     </div>
   );

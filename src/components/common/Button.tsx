@@ -15,7 +15,7 @@ export default function Button({
   className = '',
   ...props
 }: ButtonProps) {
-  const baseStyles = 'font-semibold rounded-lg transition-all duration-150 flex items-center gap-2 justify-center hover:opacity-90 active:scale-95';
+  const baseStyles = 'font-semibold rounded-lg transition-all duration-150 flex items-center gap-2 justify-center hover:opacity-90 hover:shadow-md active:scale-95 transform focus:outline-none focus-visible:ring-2 focus-visible:ring-primary';
 
   const variants = {
     // include an explicit hex fallback class to ensure solid fill even if theme colors aren't generated

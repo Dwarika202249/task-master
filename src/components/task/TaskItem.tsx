@@ -4,6 +4,7 @@ import { deleteTask, toggleTaskComplete, updateTask } from '../../features/tasks
 import type { Task } from '../../types/task.types';
 import { Trash2, Edit2, Save, X, GripVertical } from 'lucide-react';
 import Badge from '../common/Badge';
+import Button from '../common/Button';
 
 export default function TaskItem({ task }: { task: Task }) {
   const dispatch = useDispatch();
@@ -20,15 +21,15 @@ export default function TaskItem({ task }: { task: Task }) {
 
   return (
     <div
-      className={`group relative bg-surface bg-[#111827] border border-border rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary hover:shadow-lg ${
+      className={`group relative bg-surface bg-[#111827] border border-border rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary hover:shadow-lg transform hover:-translate-y-0.5 ${
         task.completed ? 'opacity-60' : ''
       } ${task.priority === 'high' ? 'border-l-4 border-danger border-l-[#EF4444]' : task.priority === 'medium' ? 'border-l-4 border-warning border-l-[#F59E0B]' : 'border-l-4 border-accent border-l-[#22C55E]'}`}
     >
       <div className="flex items-start gap-3">
         {/* Drag Handle */}
-        <div className="hidden sm:flex items-center pt-1 text-muted transition-colors">
+        <button aria-label="Drag handle" className="hidden sm:inline-flex items-center pt-1 text-muted transition-colors cursor-grab p-2">
           <GripVertical className="w-4 h-4 text-muted" />
-        </div>
+        </button>
 
         {/* Checkbox */}
         <div className="flex items-center pt-1">
@@ -81,37 +82,21 @@ export default function TaskItem({ task }: { task: Task }) {
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
           {editing ? (
             <>
-              <button
-                onClick={save}
-                className="p-2 rounded-lg transition-colors text-accent hover:bg-accent hover:text-white"
-                title="Save changes"
-              >
+              <Button onClick={save} variant="ghost" size="sm" className="text-accent" aria-label="Save changes">
                 <Save className="w-4 h-4" />
-              </button>
-              <button
-                onClick={()=>setEditing(false)}
-                className="p-2 rounded-lg transition-colors text-danger hover:bg-danger hover:text-white"
-                title="Cancel editing"
-              >
+              </Button>
+              <Button onClick={()=>setEditing(false)} variant="ghost" size="sm" className="text-danger" aria-label="Cancel editing">
                 <X className="w-4 h-4" />
-              </button>
+              </Button>
             </>
           ) : (
             <>
-              <button
-                onClick={()=>setEditing(true)}
-                className="p-2 rounded-lg transition-colors text-primary hover:bg-primary hover:text-white"
-                title="Edit task"
-              >
+              <Button onClick={()=>setEditing(true)} variant="ghost" size="sm" className="text-primary" aria-label="Edit task">
                 <Edit2 className="w-4 h-4" />
-              </button>
-              <button
-                onClick={()=>dispatch(deleteTask(task.id))}
-                className="p-2 rounded-lg transition-colors text-danger hover:bg-danger hover:text-white"
-                title="Delete task"
-              >
+              </Button>
+              <Button onClick={()=>dispatch(deleteTask(task.id))} variant="ghost" size="sm" className="text-danger" aria-label="Delete task">
                 <Trash2 className="w-4 h-4" />
-              </button>
+              </Button>
             </>
           )}
         </div>
