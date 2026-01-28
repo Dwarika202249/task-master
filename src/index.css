@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+.priority-high {
+  background-color: #fee2e2; /* light red */
+  color: #7f1d1d;
+}
+
+.priority-medium {
+  background-color: #fffbeb; /* light yellow */
+  color: #92400e;
+}
+
+.priority-low {
+  background-color: #ecfdf5; /* light green */
+  color: #064e3b;
+}
+
+/* optional: small visual tweak to match existing badge look */
+.priority-high,
+.priority-medium,
+.priority-low {
+  font-weight: 500;
+}
