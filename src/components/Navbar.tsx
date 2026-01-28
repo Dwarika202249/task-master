@@ -1,11 +1,10 @@
-import { Zap, CheckCircle, LayoutGrid } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectTaskStats, selectAllTasks, replaceAllTasks } from '../features/tasks/tasksSlice';
+import { selectAllTasks, replaceAllTasks } from '../features/tasks/tasksSlice';
 import Button from './common/Button';
 import { useRef } from 'react';
 
 export default function Navbar() {
-  const stats = useSelector(selectTaskStats);
   const tasks = useSelector(selectAllTasks);
   const dispatch = useDispatch();
   const fileRef = useRef<HTMLInputElement | null>(null);
@@ -53,15 +52,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border">
-              <LayoutGrid className="w-4 h-4 text-primary" />
-              <span className="text-sm text-muted"><span className="font-bold text-white">{stats.total}</span> tasks</span>
-            </div>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface border border-border">
-              <CheckCircle className="w-4 h-4 text-accent" />
-              <span className="text-sm text-muted"><span className="font-bold text-accent">{stats.completed}</span> done</span>
-            </div>
+          <div className="md:flex items-center gap-3">
             <div className="flex items-center gap-2">
               <input ref={fileRef} aria-label="Import tasks JSON file" onChange={(e)=>handleFile(e.target.files?.[0] ?? null)} type="file" accept="application/json" className="hidden" />
               <Button variant="secondary" size="sm" onClick={handleExport}>Export</Button>

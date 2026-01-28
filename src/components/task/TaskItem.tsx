@@ -11,10 +11,14 @@ export default function TaskItem({ task }: { task: Task }) {
   const [editing, setEditing] = useState(false);
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description || '');
+  const [category, setCategory] = useState(task.category || '');
+  const [priority, setPriority] = useState<Task['priority']>(task.priority);
+
+  const CATEGORY_OPTIONS = ['Work','Personal','Shopping','Health','Other'];
 
   const save = () => {
     if (title.trim()) {
-      dispatch(updateTask({ id: task.id, changes: { title, description } }));
+      dispatch(updateTask({ id: task.id, changes: { title, description, category, priority } }));
       setEditing(false);
     }
   };
@@ -38,7 +42,7 @@ export default function TaskItem({ task }: { task: Task }) {
             checked={task.completed}
             onChange={() => dispatch(toggleTaskComplete(task.id))}
             aria-label={task.completed ? `Mark "${task.title}" as incomplete` : `Mark "${task.title}" as complete`}
-            className="w-5 h-5 cursor-pointer"
+            className="w-5 h-5 rounded-md border border-border bg-secondary cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary transition-colors accent-[#22C55E]"
           />
         </div>
 
@@ -46,6 +50,33 @@ export default function TaskItem({ task }: { task: Task }) {
         <div className="flex-1 min-w-0">
           {editing ? (
             <div className="space-y-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div>
+                  <select
+                    value={category}
+                    onChange={(e)=>setCategory(e.target.value)}
+                    className="w-full px-3 py-2 rounded-lg bg-[#302f40] border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                    aria-label="Edit category"
+                  >
+                    {CATEGORY_OPTIONS.map((c) => (
+                      <option key={c} value={c} className="bg-[#302f40] text-white">{c}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <select
+                    value={priority}
+                    onChange={(e)=>setPriority(e.target.value as Task['priority'])}
+                    className="w-full px-3 py-2 rounded-lg bg-[#302f40] border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                    aria-label="Edit priority"
+                  >
+                    <option value="high" className="bg-[#302f40] text-white">High</option>
+                    <option value="medium" className="bg-[#302f40] text-white">Medium</option>
+                    <option value="low" className="bg-[#302f40] text-white">Low</option>
+                  </select>
+                </div>
+              </div>
+
               <input
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
@@ -91,7 +122,7 @@ export default function TaskItem({ task }: { task: Task }) {
             </>
           ) : (
             <>
-              <Button onClick={()=>setEditing(true)} variant="ghost" size="sm" className="text-primary" aria-label="Edit task">
+              <Button onClick={() => { setTitle(task.title); setDescription(task.description || ''); setCategory(task.category || ''); setPriority(task.priority); setEditing(true); }} variant="ghost" size="sm" className="text-primary" aria-label="Edit task">
                 <Edit2 className="w-4 h-4" />
               </Button>
               <Button onClick={()=>dispatch(deleteTask(task.id))} variant="ghost" size="sm" className="text-danger" aria-label="Delete task">

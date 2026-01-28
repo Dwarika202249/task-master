@@ -15,14 +15,14 @@ export function FilterBar() {
   const filter = useSelector(selectFilter);
 
   return (
-    <div className="flex gap-2 flex-wrap">
+    <div className="w-full max-w-md mx-auto flex flex-col sm:flex-row gap-2 items-center justify-center">
       {filterConfig.map(({ id, label, icon: Icon }) => (
         <Button
           key={id}
           onClick={() => dispatch(setFilter(id))}
           variant={filter === id ? 'primary' : 'secondary'}
           size="sm"
-          className="flex items-center gap-2 w-full sm:w-auto"
+          className="flex items-center justify-center gap-2 w-full sm:w-auto"
           aria-pressed={filter === id}
         >
           <Icon className="w-4 h-4" />

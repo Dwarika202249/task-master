@@ -1,6 +1,1 @@
 @import "tailwindcss";
-
-/* Global dark UI */
-:root {
-  color-scheme: dark;
-}

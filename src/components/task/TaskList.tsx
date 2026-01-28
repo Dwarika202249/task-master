@@ -21,7 +21,7 @@ export default function TaskList() {
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={`mt-6 min-h-96 p-4 bg-secondary bg-[#0F172A] border-2 rounded-2xl transition-all ${
+            className={`mt-6 min-h-96 p-4 bg-secondary bg-[#0F172A] rounded-2xl transition-all ${
               snapshot.isDraggingOver ? 'border-primary border-[#2563EB]' : 'border-border'
             }`}
           >
