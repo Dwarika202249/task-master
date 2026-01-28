@@ -21,12 +21,12 @@ export default function TaskForm() {
   };
 
   return (
-    <form onSubmit={submit} className="bg-linear-to-br from-surface to-secondary border border-border/50 rounded-2xl p-6 shadow-xl backdrop-blur-sm space-y-4">
+    <form onSubmit={submit} className="bg-[#111827] border border-border rounded-2xl p-6 shadow-card space-y-4">
       <div>
         <label htmlFor="title" className="block text-sm font-semibold text-muted mb-2">Task Title *</label>
         <input
           id="title"
-          className="w-full px-4 py-3 rounded-xl bg-secondary border border-border/50 text-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+          className="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-border text-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all"
           placeholder="What needs to be done?"
           value={title}
           onChange={(e)=>setTitle(e.target.value)}
@@ -37,7 +37,7 @@ export default function TaskForm() {
         <label htmlFor="description" className="block text-sm font-semibold text-muted mb-2">Description</label>
         <textarea
           id="description"
-          className="w-full px-4 py-3 rounded-xl bg-secondary border border-border/50 text-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
+          className="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-border text-white placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary transition-all resize-none"
           placeholder="Add details (optional)"
           rows={2}
           value={description}
@@ -54,7 +54,7 @@ export default function TaskForm() {
             id="category"
             value={category}
             onChange={(e)=>setCategory(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg bg-secondary border border-border/50 text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+            className="w-full px-4 py-2 rounded-lg bg-[#0F172A] border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
           >
             <option>Work</option>
             <option>Personal</option>
@@ -72,7 +72,7 @@ export default function TaskForm() {
             id="priority"
             value={priority}
             onChange={(e)=>setPriority(e.target.value as Priority)}
-            className="w-full px-4 py-2 rounded-lg bg-secondary border border-border/50 text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+            className="w-full px-4 py-2 rounded-lg bg-[#0F172A] border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
           >
             <option value="high">High</option>
             <option value="medium">Medium</option>

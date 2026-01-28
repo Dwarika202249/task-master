@@ -21,17 +21,15 @@ export default function TaskList() {
           <div
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className={`mt-6 min-h-96 p-4 bg-linear-to-br from-surface/50 to-secondary/50 border-2 rounded-2xl transition-all ${
-              snapshot.isDraggingOver
-                ? 'border-primary/50 bg-primary/5'
-                : 'border-border/50'
+            className={`mt-6 min-h-96 p-4 bg-[#1f461a] border-2 rounded-2xl transition-all ${
+              snapshot.isDraggingOver ? 'border-primary' : 'border-border'
             }`}
           >
             {tasks.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-80 text-center">
-                <Inbox className="w-16 h-16 text-muted/30 mb-4" />
+                <Inbox className="w-16 h-16 text-muted mb-4" />
                 <p className="text-xl font-semibold text-muted mb-2">No tasks yet</p>
-                <p className="text-sm text-muted/60">Create your first task to get started</p>
+                <p className="text-sm text-muted">Create your first task to get started</p>
               </div>
             ) : (
               <>

@@ -1,24 +1,15 @@
 @import "tailwindcss";
 
-
-.priority-high {
-  background-color: #fee2e2; /* light red */
-  color: #7f1d1d;
+/* Global dark UI */
+:root {
+  color-scheme: dark;
 }
+/* body { */
+  /* stylelint-disable-next-line at-rule-no-unknown */
+  /* @apply bg-secondary text-white antialiased; */
+/* } */
 
-.priority-medium {
-  background-color: #fffbeb; /* light yellow */
-  color: #92400e;
-}
-
-.priority-low {
-  background-color: #ecfdf5; /* light green */
-  color: #064e3b;
-}
-
-/* optional: small visual tweak to match existing badge look */
-.priority-high,
-.priority-medium,
-.priority-low {
-  font-weight: 500;
-}
+/* Priority helpers (kept simple in case used elsewhere) */
+.priority-high { background-color: #fee2e2; color: #7f1d1d; font-weight:500; }
+.priority-medium { background-color: #fffbeb; color: #92400e; font-weight:500; }
+.priority-low { background-color: #ecfdf5; color: #064e3b; font-weight:500; }

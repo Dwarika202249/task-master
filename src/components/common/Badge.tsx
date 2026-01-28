@@ -9,10 +9,10 @@ interface BadgeProps {
 export default function Badge({ variant = 'default', children, icon }: BadgeProps) {
   const variants = {
     default: 'bg-surface text-muted border border-border',
-    high: 'bg-red-500/20 text-red-300 border border-red-500/30',
-    medium: 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30',
-    low: 'bg-green-500/20 text-green-300 border border-green-500/30',
-    accent: 'bg-info/20 text-info border border-info/30',
+    high: 'bg-danger text-white border border-danger',
+    medium: 'bg-warning text-white border border-warning',
+    low: 'bg-accent text-white border border-accent',
+    accent: 'bg-info text-white border border-info',
   };
 
   return (

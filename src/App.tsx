@@ -1,15 +1,15 @@
-import Header from './components/Header';
 import TaskForm from './components/task/TaskForm';
 import TaskList from './components/task/TaskList';
 import { FilterBar } from './components/filters/FilterBar';
 import { SearchBar } from './components/filters/SearchBar';
+import Header from './components/Header';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-secondary via-slate-900 to-secondary">
-      <Header />
+    <div className="min-h-screen bg-secondary text-white">
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Header />
         {/* Task Form Section */}
         <section className="mb-8">
           <TaskForm />

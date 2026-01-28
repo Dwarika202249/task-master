@@ -3,13 +3,12 @@ import { useDispatch } from 'react-redux';
 import { deleteTask, toggleTaskComplete, updateTask } from '../../features/tasks/tasksSlice';
 import type { Task } from '../../types/task.types';
 import { Trash2, Edit2, Save, X, GripVertical } from 'lucide-react';
-import Badge from '../common/Badge';
 
-const priorityColors = {
-  high: { icon: '🔴', label: 'High' },
-  medium: { icon: '🟡', label: 'Medium' },
-  low: { icon: '🟢', label: 'Low' },
-};
+// const priorityColors = {
+//   high: { icon: '🔴', label: 'High' },
+//   medium: { icon: '🟡', label: 'Medium' },
+//   low: { icon: '🟢', label: 'Low' },
+// };
 
 export default function TaskItem({ task }: { task: Task }) {
   const dispatch = useDispatch();
@@ -26,14 +25,14 @@ export default function TaskItem({ task }: { task: Task }) {
 
   return (
     <div
-      className={`group relative bg-linear-to-r from-surface to-secondary border border-border/50 rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary/30 hover:shadow-lg ${
+      className={`group relative bg-surface border border-border rounded-xl p-4 mb-3 transition-all duration-200 hover:border-primary hover:shadow-lg ${
         task.completed ? 'opacity-60' : ''
       }`}
     >
       <div className="flex items-start gap-3">
         {/* Drag Handle */}
-        <div className="hidden sm:flex items-center pt-1 text-muted group-hover:text-primary transition-colors">
-          <GripVertical className="w-4 h-4" />
+        <div className="hidden sm:flex items-center pt-1 text-muted transition-colors">
+          <GripVertical className="w-4 h-4 text-muted" />
         </div>
 
         {/* Checkbox */}
@@ -43,7 +42,7 @@ export default function TaskItem({ task }: { task: Task }) {
             checked={task.completed}
             onChange={() => dispatch(toggleTaskComplete(task.id))}
             aria-label={task.completed ? `Mark "${task.title}" as incomplete` : `Mark "${task.title}" as complete`}
-            className="w-5 h-5 cursor-pointer accent-accent"
+            className="w-5 h-5 cursor-pointer"
           />
         </div>
 
@@ -54,13 +53,13 @@ export default function TaskItem({ task }: { task: Task }) {
               <input
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-secondary border border-primary/50 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="Task title"
               />
               <textarea
                 value={description}
                 onChange={(e)=>setDescription(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-secondary border border-primary/50 text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 placeholder="Description"
                 rows={2}
               />
@@ -74,13 +73,6 @@ export default function TaskItem({ task }: { task: Task }) {
                 <div className="text-sm text-muted mt-1">{task.description}</div>
               )}
               <div className="flex flex-wrap gap-2 mt-3">
-                <Badge variant="default">
-                  {task.category}
-                </Badge>
-                <Badge variant={task.priority as 'high' | 'medium' | 'low'}>
-                  <span className="mr-1">{priorityColors[task.priority].icon}</span>
-                  {priorityColors[task.priority].label}
-                </Badge>
               </div>
             </>
           )}
@@ -92,14 +84,14 @@ export default function TaskItem({ task }: { task: Task }) {
             <>
               <button
                 onClick={save}
-                className="p-2 hover:bg-accent/20 rounded-lg transition-colors text-accent"
+                className="p-2 rounded-lg transition-colors text-accent hover:bg-accent hover:text-white"
                 title="Save changes"
               >
                 <Save className="w-4 h-4" />
               </button>
               <button
                 onClick={()=>setEditing(false)}
-                className="p-2 hover:bg-danger/20 rounded-lg transition-colors text-danger"
+                className="p-2 rounded-lg transition-colors text-danger hover:bg-danger hover:text-white"
                 title="Cancel editing"
               >
                 <X className="w-4 h-4" />
@@ -109,14 +101,14 @@ export default function TaskItem({ task }: { task: Task }) {
             <>
               <button
                 onClick={()=>setEditing(true)}
-                className="p-2 hover:bg-primary/20 rounded-lg transition-colors text-primary"
+                className="p-2 rounded-lg transition-colors text-primary hover:bg-primary hover:text-white"
                 title="Edit task"
               >
                 <Edit2 className="w-4 h-4" />
               </button>
               <button
                 onClick={()=>dispatch(deleteTask(task.id))}
-                className="p-2 hover:bg-danger/20 rounded-lg transition-colors text-danger"
+                className="p-2 rounded-lg transition-colors text-danger hover:bg-danger hover:text-white"
                 title="Delete task"
               >
                 <Trash2 className="w-4 h-4" />

@@ -102,3 +102,17 @@ export const selectFilteredTasks = createSelector(
     });
   }
 );
+
+export const selectTasksByCategory = createSelector([selectAllTasks], (tasks) => {
+  return tasks.reduce<Record<string, number>>((acc, t) => {
+    acc[t.category] = (acc[t.category] || 0) + 1;
+    return acc;
+  }, {});
+});
+
+export const selectTaskStats = createSelector([selectAllTasks], (tasks) => {
+  const total = tasks.length;
+  const completed = tasks.filter((t) => t.completed).length;
+  const active = total - completed;
+  return { total, completed, active };
+});
