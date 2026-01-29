@@ -64,9 +64,10 @@ export default function Dashboard() {
             <div className="p-3 rounded-lg bg-white/12">
               <Tag className="w-6 h-6 text-white" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 overflow-hidden">
               <div className="text-sm font-medium text-white/90">By Category</div>
-              <div className="mt-3 space-y-2 max-h-60 overflow-auto">
+              <div className="mt-3 space-y-2 max-h-60 overflow-y-auto pr-2 
+                           scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent hover:scrollbar-thumb-white/40 transition-colors">
                 {Object.entries(byCategory).map(([cat, count]) => (
                   <div key={cat} className="flex items-center justify-between gap-3 bg-white/6 rounded px-3 py-2">
                     <div className="flex items-center gap-3">
