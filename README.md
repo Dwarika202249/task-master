@@ -4,6 +4,9 @@ SyncQuark is a high-performance, dark-themed Task Management application enginee
 
 ---
 
+Live Link: https://syncquark.netlify.app/
+
+
 ## 🚀 Key Features
 
 ### 🛠️ Core Management
