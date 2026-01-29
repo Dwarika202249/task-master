@@ -14,7 +14,8 @@ export function loadState(): { tasks: Task[] } | undefined {
 export function saveState(state: { tasks: Task[] }) {
   try {
     localStorage.setItem(KEY, JSON.stringify(state));
-  } catch {
-    // swallow errors (optional: console.error)
+  } catch (error) {
+    console.error('Failed to save state to localStorage', error);
+    
   }
 }
